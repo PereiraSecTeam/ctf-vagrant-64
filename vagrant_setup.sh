@@ -1,4 +1,11 @@
 #!/bin/bash
+#We need a more general Vagrant Enviroment that includes at least tools from the next categories:
+#Reversing : Is done by the barbershopper.
+#Networking 
+#Scripting: actually is just a part of it.
+#Forensics .
+#Cryptography
+#Websec
 
 # Updates
 sudo apt-get -y update
@@ -9,20 +16,36 @@ sudo apt-get -y install tmux
 sudo apt-get -y install gdb gdb-multiarch
 sudo apt-get -y install unzip
 sudo apt-get -y install foremost
+sudo apt-get -y install exiftool
+sudo apt-get -y install objdump 
+
+#Network Utilities
+sudo apt-get install -y tshark wireshark
+sudo apt-get install -y pixiewps 
+sudo apt-get install -y nc 
+sudo apt-get install -y tcpdump
+sudo apt-get install -y openssl
+sudo apt-get install -y tcpdump
+sudo apt-get install -y openvpn
+
+#Steganography Utilities
+sudo apt-get install -y pngcheck 
+sudo apt-get install -y steghide
+
 
 # QEMU with MIPS/ARM - http://reverseengineering.stackexchange.com/questions/8829/cross-debugging-for-mips-elf-with-qemu-toolchain
-sudo apt-get -y install qemu qemu-user qemu-user-static
-sudo apt-get -y install 'binfmt*'
-sudo apt-get -y install libc6-armhf-armel-cross
-sudo apt-get -y install debian-keyring
-sudo apt-get -y install debian-archive-keyring
-sudo apt-get -y install emdebian-archive-keyring
+sudo apt-get install -yqemu qemu-user qemu-user-static
+sudo apt-get install -y 'binfmt*'
+sudo apt-get install -y libc6-armhf-armel-cross
+sudo apt-get install -y debian-keyring
+sudo apt-get install -y debian-archive-keyring
+sudo apt-get install -y emdebian-archive-keyring
 tee /etc/apt/sources.list.d/emdebian.list << EOF
 deb http://mirrors.mit.edu/debian squeeze main
 deb http://www.emdebian.org/debian squeeze main
 EOF
-sudo apt-get -y install libc6-mipsel-cross
-sudo apt-get -y install libc6-arm-cross
+sudo apt-get install -y libc6-mipsel-cross
+sudo apt-get install -y libc6-arm-cross
 mkdir /etc/qemu-binfmt
 ln -s /usr/mipsel-linux-gnu /etc/qemu-binfmt/mipsel 
 ln -s /usr/arm-linux-gnueabihf /etc/qemu-binfmt/arm
@@ -30,7 +53,7 @@ rm /etc/apt/sources.list.d/emdebian.list
 # sudo apt-get update
 
 # Install Binjitsu
-sudo apt-get -y install python2.7 python-pip python-dev git
+sudo apt-get install -y python2.7 python-pip python-dev git
 sudo pip install --upgrade git+https://github.com/binjitsu/binjitsu.git
 
 cd
